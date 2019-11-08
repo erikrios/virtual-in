@@ -1,9 +1,10 @@
-package com.erikriosetiawan.virtualin
+package com.erikriosetiawan.virtualin.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.erikriosetiawan.virtualin.R
 
 class SplashScreenActivity : AppCompatActivity() {
 

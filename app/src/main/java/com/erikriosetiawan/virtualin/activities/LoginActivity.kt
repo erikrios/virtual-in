@@ -38,7 +38,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btn_login -> {
-                Toast.makeText(this, "Button login clicked!", Toast.LENGTH_SHORT).show()
+                if (etEmail.text.toString().trim() == "warokdroid@gmail.com" && etPassword.text.toString().trim() == "WAROKDROID") {
+                    val homeIntent = Intent(this@LoginActivity, MainActivity::class.java)
+                    startActivity(homeIntent)
+                } else {
+                    etEmail.error = "Email yang dimasukkan belum terdaftar"
+                    etPassword.error = "Password yang dimasukkan salah"
+                }
             }
         }
     }

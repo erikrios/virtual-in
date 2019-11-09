@@ -1,15 +1,18 @@
 package com.erikriosetiawan.virtualin.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.virtualin.R
+import com.erikriosetiawan.virtualin.activities.MainActivity
+import com.erikriosetiawan.virtualin.fragments.UmkmCategoryFragment
 import com.erikriosetiawan.virtualin.models.Category
+import com.erikriosetiawan.virtualin.models.Umkm
 
 class CategoriesAdapter(
     var context: Context? = null,
@@ -28,9 +31,20 @@ class CategoriesAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         categories?.get(position)?.let { it ->
             holder.bindItem(it) {
-                Toast.makeText(context, categories?.let {
-                    it[position].name
-                }, Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                it.id?.let { itId -> bundle.putInt(UmkmCategoryFragment.KEY_ID, itId) }
+                it.name?.let { itName -> bundle.putString(UmkmCategoryFragment.KEY_NAME, itName) }
+                it.icon?.let { itIcon -> bundle.putInt(UmkmCategoryFragment.KEY_ICON, itIcon) }
+                val umkms: ArrayList<Umkm> = arrayListOf()
+                it.umkms?.let { itUmkms -> umkms.addAll(itUmkms) }
+                bundle.putParcelableArrayList(UmkmCategoryFragment.KEY_UMKMS, umkms)
+
+                val umkmCategoryFragment = UmkmCategoryFragment()
+                umkmCategoryFragment.arguments = bundle
+                val activity: MainActivity = context as MainActivity
+                activity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment, umkmCategoryFragment)
+                    .addToBackStack(null).commit()
             }
         }
     }

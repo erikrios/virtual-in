@@ -36,7 +36,9 @@ class TopPointsAdapter(var context: Context? = null, var customers: MutableList<
         fun bindItem(customer: Customer, listener: (Customer) -> Unit) {
             customer.photo?.let { imgIcon.setImageResource(it) }
             customer.name?.let { tvCustomerName.text = it }
-            customer.point?.let { tvCustomerPoint.text = it.toString() }
+            customer.point?.let {
+                tvCustomerPoint.text = itemView.resources.getString(R.string.point, it.toString())
+            }
             itemView.setOnClickListener { listener(customer) }
         }
     }

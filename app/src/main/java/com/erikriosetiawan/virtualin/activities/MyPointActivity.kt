@@ -35,7 +35,10 @@ class MyPointActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.img_arrow_back -> finish()
+            R.id.img_arrow_back -> {
+                finish()
+                overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left)
+            }
         }
     }
 

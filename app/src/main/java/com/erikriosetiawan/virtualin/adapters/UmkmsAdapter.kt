@@ -1,5 +1,6 @@
 package com.erikriosetiawan.virtualin.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,6 +22,7 @@ class UmkmsAdapter(var context: Context? = null, var umkms: MutableList<Umkm>? =
 
     override fun getItemCount(): Int = umkms?.size ?: -1
 
+    @SuppressLint("ResourceType")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         umkms?.let { it[position] }?.let { itUmkm ->
             holder.bindItem(itUmkm) {
@@ -40,6 +42,7 @@ class UmkmsAdapter(var context: Context? = null, var umkms: MutableList<Umkm>? =
                 umkmDetailFragment.arguments = bundle
                 val activity: MainActivity = context as MainActivity
                 activity.supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.transition.slide_in_right, R.transition.slide_out_left)
                     .replace(R.id.nav_host_fragment, umkmDetailFragment)
                     .addToBackStack(null).commit()
             }

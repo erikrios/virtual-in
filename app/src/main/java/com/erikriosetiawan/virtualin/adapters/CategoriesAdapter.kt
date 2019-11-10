@@ -1,5 +1,6 @@
 package com.erikriosetiawan.virtualin.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,6 +29,7 @@ class CategoriesAdapter(
 
     override fun getItemCount(): Int = categories?.size ?: -1
 
+    @SuppressLint("ResourceType")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         categories?.get(position)?.let { it ->
             holder.bindItem(it) {
@@ -43,6 +45,7 @@ class CategoriesAdapter(
                 umkmCategoryFragment.arguments = bundle
                 val activity: MainActivity = context as MainActivity
                 activity.supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.transition.slide_in_left, R.transition.slide_out_right)
                     .replace(R.id.nav_host_fragment, umkmCategoryFragment)
                     .addToBackStack(null).commit()
             }

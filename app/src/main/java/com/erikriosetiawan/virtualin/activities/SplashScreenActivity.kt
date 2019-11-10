@@ -25,6 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
             // Call finish() function to destroy latest activity
             finish()
+            overridePendingTransition(R.transition.zoom_in, R.transition.zoom_out)
         }, SPLASH_TIME_OUT)
     }
 }

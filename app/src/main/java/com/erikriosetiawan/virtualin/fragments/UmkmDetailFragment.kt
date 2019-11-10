@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.erikriosetiawan.virtualin.R
+import com.erikriosetiawan.virtualin.activities.MainActivity
 import com.erikriosetiawan.virtualin.activities.MyPointActivity
 
 /**
@@ -76,6 +77,11 @@ class UmkmDetailFragment : Fragment(), View.OnClickListener {
             R.id.btn_my_point -> {
                 val pointIntent = Intent(context, MyPointActivity::class.java)
                 startActivity(pointIntent)
+                val activity: MainActivity = context as MainActivity
+                activity.overridePendingTransition(
+                    R.transition.slide_in_left,
+                    R.transition.slide_out_right
+                )
             }
         }
     }

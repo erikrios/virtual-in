@@ -42,6 +42,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     val homeIntent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(homeIntent)
                     finish()
+                    overridePendingTransition(
+                        R.transition.slide_in_right,
+                        R.transition.slide_out_left
+                    )
                 } else {
                     etEmail.error = "Email yang dimasukkan belum terdaftar"
                     etPassword.error = "Password yang dimasukkan salah"

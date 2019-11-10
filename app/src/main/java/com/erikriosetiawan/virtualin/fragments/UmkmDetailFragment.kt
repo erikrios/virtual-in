@@ -1,6 +1,7 @@
 package com.erikriosetiawan.virtualin.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.erikriosetiawan.virtualin.R
+import com.erikriosetiawan.virtualin.activities.MyPointActivity
 
 /**
  * A simple [Fragment] subclass.
@@ -72,7 +74,8 @@ class UmkmDetailFragment : Fragment(), View.OnClickListener {
                 else imgBoomark.setImageResource(R.drawable.ic_bookmark_border_white_24dp)
             }
             R.id.btn_my_point -> {
-                Toast.makeText(context, "Button My Point clicked!", Toast.LENGTH_SHORT).show()
+                val pointIntent = Intent(context, MyPointActivity::class.java)
+                startActivity(pointIntent)
             }
         }
     }

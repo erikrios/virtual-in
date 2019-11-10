@@ -41,6 +41,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 if (etEmail.text.toString().trim() == "warokdroid@gmail.com" && etPassword.text.toString().trim() == "WAROKDROID") {
                     val homeIntent = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(homeIntent)
+                    finish()
                 } else {
                     etEmail.error = "Email yang dimasukkan belum terdaftar"
                     etPassword.error = "Password yang dimasukkan salah"

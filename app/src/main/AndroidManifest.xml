@@ -12,6 +12,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
+            android:name=".activities.MyPointActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppThemeNoActionBar" />

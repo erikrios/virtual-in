@@ -1,14 +1,16 @@
 package com.erikriosetiawan.virtualin.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.virtualin.R
+import com.erikriosetiawan.virtualin.activities.MainActivity
+import com.erikriosetiawan.virtualin.fragments.UmkmDetailFragment
 import com.erikriosetiawan.virtualin.models.Umkm
 
 class UmkmsAdapter(var context: Context? = null, var umkms: MutableList<Umkm>? = null) :
@@ -20,9 +22,26 @@ class UmkmsAdapter(var context: Context? = null, var umkms: MutableList<Umkm>? =
     override fun getItemCount(): Int = umkms?.size ?: -1
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        umkms?.let { it[position] }?.let {
-            holder.bindItem(it) {
-                Toast.makeText(context, it.name, Toast.LENGTH_SHORT).show()
+        umkms?.let { it[position] }?.let { itUmkm ->
+            holder.bindItem(itUmkm) {
+                val bundle = Bundle()
+                it.icon?.let { bundle.putInt(UmkmDetailFragment.KEY_ICON, it) }
+                it.name?.let { bundle.putString(UmkmDetailFragment.KEY_UMKM_NAME, it) }
+                it.founder?.let { bundle.putString(UmkmDetailFragment.KEY_UMKM_FOUNDER, it) }
+                it.rating?.let {
+                    bundle.putString(
+                        UmkmDetailFragment.KEY_UMKM_RATING,
+                        it.toString()
+                    )
+                }
+                it.about?.let { bundle.putString(UmkmDetailFragment.KEY_ABOUT_UMKM, it) }
+
+                val umkmDetailFragment = UmkmDetailFragment()
+                umkmDetailFragment.arguments = bundle
+                val activity: MainActivity = context as MainActivity
+                activity.supportFragmentManager.beginTransaction()
+                    .replace(R.id.nav_host_fragment, umkmDetailFragment)
+                    .addToBackStack(null).commit()
             }
         }
     }

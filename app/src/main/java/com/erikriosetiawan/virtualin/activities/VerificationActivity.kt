@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.erikriosetiawan.virtualin.R
 
 class VerificationActivity : AppCompatActivity(), View.OnClickListener {
@@ -18,11 +19,16 @@ class VerificationActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var tvResend: TextView
     private lateinit var btnContinue: Button
 
+    companion object {
+        private const val MAX_EDIT_TEXT_LENGTH = 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_verification)
 
         initViews()
+        moveEditText()
     }
 
     private fun initViews() {
@@ -45,5 +51,19 @@ class VerificationActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onResend(view: View) {
         Toast.makeText(this, "Resend clicked!", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun moveEditText() {
+        etVerificationOne.addTextChangedListener {
+            if (etVerificationOne.text.toString().length == MAX_EDIT_TEXT_LENGTH) etVerificationTwo.requestFocus()
+        }
+
+        etVerificationTwo.addTextChangedListener {
+            if (etVerificationOne.text.toString().length == MAX_EDIT_TEXT_LENGTH) etVerificationThree.requestFocus()
+        }
+
+        etVerificationThree.addTextChangedListener {
+            if (etVerificationOne.text.toString().length == MAX_EDIT_TEXT_LENGTH) etVerificationFour.requestFocus()
+        }
     }
 }

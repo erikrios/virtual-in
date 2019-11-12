@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VirtualIn</string>
+    <string name="app_name">Virtual-In</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -278,4 +278,6 @@
     <string name="point_total">%s Point</string>
     <string name="price_old">Rp. %s</string>
     <string name="price_new">Rp. %s</string>
+    <string name="promotion">Promotion</string>
+    <string name="profile">Profile</string>
 </resources>

@@ -12,11 +12,12 @@
         android:id="@+id/tv_registration_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="Registration Form"
         android:textColor="@android:color/white"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/et_full_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +31,7 @@
         android:hint="Full Name"
         android:inputType="textPersonName"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/et_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_registration_form" />
@@ -38,11 +40,11 @@
         android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/bg_form"
         android:hint="UserName"
         android:inputType="text"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/et_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_full_name" />
@@ -51,12 +53,11 @@
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_form"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/et_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_username" />
@@ -65,12 +66,11 @@
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/bg_form"
         android:hint="Password"
         android:inputType="textPassword"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/et_repassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_email" />
@@ -79,20 +79,20 @@
         android:id="@+id/et_repassword"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/bg_form"
         android:hint="Re-Password"
         android:inputType="textPassword"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_create_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_password" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_create_account"
         android:layout_width="200dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:background="@drawable/bg_button"
         android:text="Create Account"
         android:textColor="@android:color/white"
@@ -100,7 +100,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/btn_sign_with_google"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_repassword" />
 
     <Button
         android:id="@+id/btn_sign_with_google"
@@ -114,6 +115,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_create_account" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

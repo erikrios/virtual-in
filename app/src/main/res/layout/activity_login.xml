@@ -9,6 +9,7 @@
 
     <EditText
         android:id="@+id/et_email"
+        android:textCursorDrawable="@drawable/color_cursor"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginBottom="16dp"
@@ -19,6 +20,7 @@
 
     <EditText
         android:id="@+id/et_password"
+        android:textCursorDrawable="@drawable/color_cursor"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginBottom="16dp"

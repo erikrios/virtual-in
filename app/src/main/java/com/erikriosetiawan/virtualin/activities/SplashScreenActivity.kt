@@ -9,7 +9,7 @@ import com.erikriosetiawan.virtualin.R
 class SplashScreenActivity : AppCompatActivity() {
 
     companion object {
-        private const val SPLASH_TIME_OUT: Long = 5000
+        private const val SPLASH_TIME_OUT: Long = 2000
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
             // Call finish() function to destroy latest activity
             finish()
-            overridePendingTransition(R.transition.zoom_in, R.transition.zoom_out)
         }, SPLASH_TIME_OUT)
     }
 }

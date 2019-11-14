@@ -1,4 +1,4 @@
-package com.erikriosetiawan.virtualin.activities.ui.home
+package com.erikriosetiawan.virtualin.fragments
 
 import android.content.res.TypedArray
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.virtualin.R
@@ -17,8 +16,6 @@ import com.erikriosetiawan.virtualin.models.Customer
 import com.erikriosetiawan.virtualin.models.Umkm
 
 class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var rvTopPoints: RecyclerView
@@ -47,8 +44,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProviders.of(this).get(HomeViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_home, container, false)
         return root
     }
@@ -116,13 +111,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setRecyclerViewCategories() {
-        rvCategories.adapter = CategoriesAdapter(context, categories)
+        val categoriesAdapter = CategoriesAdapter(context, categories)
+        rvCategories.adapter = categoriesAdapter
         rvCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun setRecyclerViewTopPoints() {
-        rvTopPoints.adapter = TopPointsAdapter(context, customers)
+        val topPointsAdapter = TopPointsAdapter(context, customers)
+        rvTopPoints.adapter = topPointsAdapter
         rvTopPoints.layoutManager = LinearLayoutManager(context)
     }
 }

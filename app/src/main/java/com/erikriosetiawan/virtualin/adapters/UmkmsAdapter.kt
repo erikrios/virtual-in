@@ -43,7 +43,7 @@ class UmkmsAdapter(var context: Context? = null, var umkms: MutableList<Umkm>? =
                 val activity: MainActivity = context as MainActivity
                 activity.supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.transition.slide_in_right, R.transition.slide_out_left)
-                    .replace(R.id.nav_host_fragment, umkmDetailFragment)
+                    .replace(R.id.frame_home, umkmDetailFragment)
                     .addToBackStack(null).commit()
             }
         }

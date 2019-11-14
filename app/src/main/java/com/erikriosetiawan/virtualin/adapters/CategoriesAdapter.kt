@@ -46,7 +46,7 @@ class CategoriesAdapter(
                 val activity: MainActivity = context as MainActivity
                 activity.supportFragmentManager.beginTransaction()
                     .setCustomAnimations(R.transition.slide_in_left, R.transition.slide_out_right)
-                    .replace(R.id.nav_host_fragment, umkmCategoryFragment)
+                    .replace(R.id.frame_home, umkmCategoryFragment)
                     .addToBackStack(null).commit()
             }
         }
